@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOAR User Journey - Complete Roadmap</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Google Sans", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slide-container {
+        background: white;
+        width: 1280px;
+        height: 720px;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        background: linear-gradient(
+          90deg,
+          #4285f4 0%,
+          #34a853 25%,
+          #fbbc05 50%,
+          #ea4335 75%,
+          #9c27b0 100%
+        );
+        padding: 20px 40px;
+        color: white;
+        text-align: center;
+      }
+
+      .company-logo {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+      }
+
+      .main-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .journey-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 2px;
+        background: #f8f9fa;
+        padding: 2px;
+      }
+
+      .journey-stage {
+        background: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .journey-stage:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      .stage-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .stage-number {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 12px;
+        color: white;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      .stage-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #202124;
+        line-height: 1.2;
+      }
+
+      .stage-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .objective {
+        font-size: 10px;
+        color: #5f6368;
+        font-style: italic;
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .key-actions {
+        font-size: 9px;
+        color: #3c4043;
+        line-height: 1.4;
+      }
+
+      .key-actions ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .key-actions li {
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 2px;
+      }
+
+      .key-actions li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .emotion-indicator {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .emotion-icon {
+        font-size: 14px;
+      }
+
+      .emotion-label {
+        font-size: 8px;
+        color: #5f6368;
+        font-weight: 500;
+      }
+
+      /* Stage-specific colors */
+      .stage-1 .stage-number {
+        background: #4285f4;
+      }
+      .stage-1 .key-actions li::before {
+        color: #4285f4;
+      }
+
+      .stage-2 .stage-number {
+        background: #34a853;
+      }
+      .stage-2 .key-actions li::before {
+        color: #34a853;
+      }
+
+      .stage-3 .stage-number {
+        background: #fbbc05;
+        color: #202124;
+      }
+      .stage-3 .key-actions li::before {
+        color: #fbbc05;
+      }
+
+      .stage-4 .stage-number {
+        background: #ea4335;
+      }
+      .stage-4 .key-actions li::before {
+        color: #ea4335;
+      }
+
+      .stage-5 .stage-number {
+        background: #9c27b0;
+      }
+      .stage-5 .key-actions li::before {
+        color: #9c27b0;
+      }
+
+      .stage-6 .stage-number {
+        background: #ff6d01;
+      }
+      .stage-6 .key-actions li::before {
+        color: #ff6d01;
+      }
+
+      .stage-7 .stage-number {
+        background: #00acc1;
+      }
+      .stage-7 .key-actions li::before {
+        color: #00acc1;
+      }
+
+      .stage-8 .stage-number {
+        background: #7cb342;
+      }
+      .stage-8 .key-actions li::before {
+        color: #7cb342;
+      }
+
+      .stage-9 .stage-number {
+        background: #e53935;
+      }
+      .stage-9 .key-actions li::before {
+        color: #e53935;
+      }
+
+      .stage-10 .stage-number {
+        background: #8e24aa;
+      }
+      .stage-10 .key-actions li::before {
+        color: #8e24aa;
+      }
+
+      .download-controls {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+      }
+
+      .control-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .control-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+
+      .flow-arrows {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .arrow {
+        position: absolute;
+        color: #dadce0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .arrow-right {
+        left: 240px;
+        top: -10px;
+      }
+      .arrow-down {
+        left: 120px;
+        top: 60px;
+        transform: rotate(90deg);
+      }
+      .arrow-left {
+        left: 0px;
+        top: 130px;
+        transform: rotate(180deg);
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .slide-container {
+          width: 100%;
+          height: auto;
+          box-shadow: none;
+        }
+        .download-controls {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="header">
+        <div class="company-logo">MOAR</div>
+        <div class="main-title">Complete User Journey Roadmap</div>
+      </div>
+
+      <div class="journey-grid">
+        <div class="journey-stage stage-2">
+          <div class="stage-header">
+            <div class="stage-number">1</div>
+            <div class="stage-title">💡 Interest / Consideration</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Get leads curious & engaged</div>
+            <div class="key-actions">
+              <ul>
+                <li>Website visits</li>
+                <li>Follows social media</li>
+                <li>Schedules tour</li>
+                <li>Content marketing</li>
+                <li>Referral programs</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">🤗</div>
+              <div class="emotion-label">INTERESTED</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-3">
+          <div class="stage-header">
+            <div class="stage-number">2</div>
+            <div class="stage-title">⚖️ Evaluation</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Help user compare & build trust</div>
+            <div class="key-actions">
+              <ul>
+                <li>Speaks to Sales/Host</li>
+                <li>Detailed package questions</li>
+                <li>Reviews testimonials</li>
+                <li>Trial ours offered</li>
+                <li>Compares competitors</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">🧐</div>
+              <div class="emotion-label">EVALUATING</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-4">
+          <div class="stage-header">
+            <div class="stage-number">3</div>
+            <div class="stage-title">✅ Decision & Action</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Help them join easily</div>
+            <div class="key-actions">
+              <ul>
+                <li>Finalizes plan selection</li>
+                <li>Negotiates terms</li>
+                <li>Smooth payment process</li>
+                <li>Onboarding documents</li>
+                <li>Welcome message sent</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">💪</div>
+              <div class="emotion-label">COMMITTED</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-5">
+          <div class="stage-header">
+            <div class="stage-number">4</div>
+            <div class="stage-title">🎉 Onboarding</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Start the experience strong</div>
+            <div class="key-actions">
+              <ul>
+                <li>Welcome kit delivery</li>
+                <li>Orientation session</li>
+                <li>Community introduction</li>
+                <li>Desk setup assistance</li>
+                <li>First 3 days delight</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">😊</div>
+              <div class="emotion-label">EXCITED</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-6">
+          <div class="stage-header">
+            <div class="stage-number">5</div>
+            <div class="stage-title">💼 Daily Usage</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Keep them happy & active</div>
+            <div class="key-actions">
+              <ul>
+                <li>Uses workspace & facilities</li>
+                <li>Attends events & workshops</li>
+                <li>Community interactions</li>
+                <li>Support when needed</li>
+                <li>Perks & surprise treats</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">🚀</div>
+              <div class="emotion-label">PRODUCTIVE</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-7">
+          <div class="stage-header">
+            <div class="stage-number">6</div>
+            <div class="stage-title">🔧 Support & Feedback</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Solve problems fast, capture signals</div>
+            <div class="key-actions">
+              <ul>
+                <li>Multiple support channels</li>
+                <li>Issue categorization</li>
+                <li>FCR >90% target</li>
+                <li>Feedback collection</li>
+                <li>Proactive check-ins</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">😌</div>
+              <div class="emotion-label">SUPPORTED</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-8">
+          <div class="stage-header">
+            <div class="stage-number">7</div>
+            <div class="stage-title">💝 Engagement & Retention</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Keep them loving Moar</div>
+            <div class="key-actions">
+              <ul>
+                <li>Surprise gifts & stories</li>
+                <li>Referral rewards</li>
+                <li>Loyalty perks</li>
+                <li>Package upgrades</li>
+                <li>Member recognition</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">❤️</div>
+              <div class="emotion-label">LOYAL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-9">
+          <div class="stage-header">
+            <div class="stage-number">8</div>
+            <div class="stage-title">👋 Churn / Exit</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Exit with dignity, learn for growth</div>
+            <div class="key-actions">
+              <ul>
+                <li>Exit feedback collection</li>
+                <li>Churn reason classification</li>
+                <li>Graceful offboarding</li>
+                <li>Win-back campaign setup</li>
+                <li>Relationship maintenance</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">😐</div>
+              <div class="emotion-label">TRANSITIONING</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage stage-10">
+          <div class="stage-header">
+            <div class="stage-number">9</div>
+            <div class="stage-title">🔄 Re-engagement</div>
+          </div>
+          <div class="stage-content">
+            <div class="objective">Win back past users</div>
+            <div class="key-actions">
+              <ul>
+                <li>Event invitations</li>
+                <li>Anniversary reminders</li>
+                <li>Personalized messaging</li>
+                <li>Limited-time offers</li>
+                <li>Success story sharing</li>
+              </ul>
+            </div>
+            <div class="emotion-indicator">
+              <div class="emotion-icon">🤝</div>
+              <div class="emotion-label">RECONNECTING</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrows">
+        <div class="arrow arrow-right">→</div>
+        <div class="arrow arrow-down">→</div>
+        <div class="arrow arrow-left">→</div>
+      </div>
+    </div>
+
+    <script>
+      function downloadSlide() {
+        const link = document.createElement("a");
+        link.href =
+          "data:text/html;charset=utf-8," +
+          encodeURIComponent(document.documentElement.outerHTML);
+        link.download = "MOAR_User_Journey_GoogleSlides_Style.html";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function printSlide() {
+        window.print();
+      }
+
+      function copyContent() {
+        const content = `
+MOAR COWORKING - COMPLETE USER JOURNEY ROADMAP
+
+1. 🔍 AWARENESS / DISCOVERY
+Objective: Let people know Moar exists and why it's special
+• Google SEO & Maps listings
+• Social Media presence  
+• Word-of-mouth & referrals
+• Event sponsorships
+• Brand storytelling
+Emotion: Curious
+
+2. 💡 INTEREST / CONSIDERATION  
+Objective: Get leads curious & engaged
+• Website visits & form contacts
+• Downloads brochures
+• Follows social media
+• Schedules tour
+• Content marketing
+Emotion: Interested
+
+3. ⚖️ EVALUATION
+Objective: Help user compare & build trust
+• Speaks to Sales/Host
+• Detailed package questions
+• Compares competitors
+• Reviews testimonials
+• Trial days offered
+Emotion: Evaluating
+
+4. ✅ DECISION & ACTION
+Objective: Help them join easily
+• Finalizes plan selection
+• Negotiates terms
+• Smooth payment process
+• Onboarding documents
+• Welcome message sent
+Emotion: Committed
+
+5. 🎉 ONBOARDING
+Objective: Start the experience strong
+• Welcome kit delivery
+• Orientation session
+• Community introduction
+• Desk setup assistance
+• First 3 days delight
+Emotion: Excited
+
+6. 💼 DAILY USAGE
+Objective: Keep them happy & active
+• Uses workspace & facilities
+• Attends events & workshops
+• Community interactions
+• Support when needed
+• Perks & surprise treats
+Emotion: Productive
+
+7. 🔧 SUPPORT & FEEDBACK
+Objective: Solve problems fast, capture signals
+• Multiple support channels
+• Issue categorization
+• FCR >90% target
+• Feedback collection
+• Proactive check-ins
+Emotion: Supported
+
+8. 💝 ENGAGEMENT & RETENTION
+Objective: Keep them loving Moar
+• Surprise gifts & stories
+• Referral rewards
+• Loyalty perks
+• Package upgrades
+• Member recognition
+Emotion: Loyal
+
+9. 👋 CHURN / EXIT
+Objective: Exit with dignity, learn for growth
+• Exit feedback collection
+• Churn reason classification
+• Graceful offboarding
+• Win-back campaign setup
+• Relationship maintenance
+Emotion: Transitioning
+
+10. 🔄 RE-ENGAGEMENT
+Objective: Win back past users
+• Event invitations
+• Anniversary reminders
+• Personalized messaging
+• Limited-time offers
+• Success story sharing
+Emotion: Reconnecting
+            `;
+
+        navigator.clipboard.writeText(content).then(() => {
+          alert(
+            "Content copied to clipboard! You can now paste this into Google Slides or PowerPoint."
+          );
+        });
+      }
+
+      // Add interactive hover effects
+      document.querySelectorAll(".journey-stage").forEach((stage) => {
+        stage.addEventListener("mouseenter", function () {
+          this.style.transform = "scale(1.02)";
+          this.style.zIndex = "10";
+        });
+
+        stage.addEventListener("mouseleave", function () {
+          this.style.transform = "scale(1)";
+          this.style.zIndex = "1";
+        });
+      });
+    </script>
+  </body>
+</html>
