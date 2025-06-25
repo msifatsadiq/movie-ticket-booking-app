@@ -1,7 +1,12 @@
+import FeaturedSection from "../components/FeaturedSection"
+import HeroSection from "../components/HeroSection"
 
 const Home = () => {
     return (
-        <div></div>
+        <div>
+            <HeroSection />
+            <FeaturedSection />
+        </div>
     )
 }
 

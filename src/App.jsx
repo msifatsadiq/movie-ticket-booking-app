@@ -13,7 +13,10 @@ const App = () => {
   return (
     <>
       <Toaster />
+
       {!isAdminRoute && <Navbar />}
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />

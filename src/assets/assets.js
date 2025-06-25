@@ -1,17 +1,17 @@
 import appStore from './appStore.svg'
+import getticketLogo from './gettickeLogo.png'
 import googlePlay from './googlePlay.svg'
-import logo from './logo.png'
 import marvelLogo from './marvelLogo.svg'
 import profile from './profile.png'
 import screenImage from './screenImage.svg'
 
 export const assets = {
-    logo,
+    getticketLogo,
     marvelLogo,
     googlePlay,
     appStore,
     screenImage,
-    profile
+    profile,
 }
 
 export const dummyTrailers = [
