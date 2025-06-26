@@ -6,7 +6,7 @@ const HeroSection = () => {
     const navigate = useNavigate();
     return (
         <div className="flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 
-        bg-[url('/public/backgroundImage.png')] bg-cover bg-center h-screen ">
+        bg-[url('https://image.tmdb.org/t/p/original/ubP2OsF3GlfqYPvXyLw9d78djGX.jpg')] bg-cover bg-center  h-screen ">
 
             <img src={assets.marvelLogo} alt="" className="max-h-11 lg:h-11 mt-20" />
 
@@ -24,7 +24,7 @@ const HeroSection = () => {
                 <p className=" text-gray-300">In a post-apocalyptic world where cities ride on wheels and <br /> consume each other to survive, two people meet in London and <br /> try to stop a conspiracy.</p>
             </div>
             <div>
-                <button onClick={() => navigate('/movies')} className="bg-red-600 text-white px-6 py-0.5 rounded-md hover:bg-red-700 transition duration-300 cursor-pointer">Explore  Now <MoveRightIcon className="w-6 " /></button>
+                <button onClick={() => navigate('/movies')} className="bg-red-600 text-white px-8 py-0.5 rounded-md hover:bg-red-700 transition duration-300 cursor-pointer">Explore  Now <MoveRightIcon className="w-6 " /></button>
             </div>
 
         </div>
