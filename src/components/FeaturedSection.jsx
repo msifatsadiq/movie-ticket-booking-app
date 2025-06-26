@@ -6,6 +6,8 @@ import FeaturedCardSection from "./FeaturedCardSection";
 
 const FeaturedSection = () => {
     const navigate = useNavigate();
+    // This component displays a featured section with a title, a button to view all movies, and a grid of featured movie cards.
+    // It also includes a button to show more movies, which navigates to the '/movies' route.
     return (
         <div className="px-6 md:px-16 lg:px-24 xl:px-44 overflow-hidden ">
 
