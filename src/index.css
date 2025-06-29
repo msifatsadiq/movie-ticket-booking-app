@@ -9,10 +9,13 @@
 * {
   font-family: "Exo 2", sans-serif;
   scrollbar-width: thin;
-  scrollbar-color: #888 #f0f0f0;
+  scrollbar-color: #787777 #1e1e1e;
 }
 
 body {
   background-color: #09090b;
   color: white;
+}
+.no-scrollbar {
+  scrollbar-width: none;
 }
