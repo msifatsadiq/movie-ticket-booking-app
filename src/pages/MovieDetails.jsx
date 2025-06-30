@@ -1,13 +1,18 @@
 import { HeartIcon, PlayCircle, StarsIcon } from "lucide-react"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { dummyDateTimeData, dummyShowsData } from "../assets/assets"
 import BlurCircle from "../components/BlurCircle"
+import DateSelect from "../components/DateSelect"
+import FeaturedCardSection from "../components/FeaturedCardSection"
+import Loading from "../components/Loading"
 import timeFormat from "../lib/timeFormat"
 
 const MovieDetails = () => {
     // This component is a placeholder for movie details.
     // It currently displays a centered card with an image and some text.
+
+    const navigate = useNavigate()
 
     const { id } = useParams()
     const [show, setShow] = useState(null)
@@ -16,10 +21,13 @@ const MovieDetails = () => {
     const getShow = async () => {
 
         const show = dummyShowsData.find((show) => show._id === id)
-        setShow({
-            movie: show,
-            dateTime: dummyDateTimeData
-        })
+        if (show) {
+
+            setShow({
+                movie: show,
+                dateTime: dummyDateTimeData
+            })
+        }
     }
 
     useEffect(() => {
@@ -87,11 +95,31 @@ const MovieDetails = () => {
 
             </div>
 
-        </div>
+            <DateSelect dateTime={show.dateTime} id={id} />
+            <p className="text-lg font-medium mt-20 mb-8">You may also like</p>
+            <div className="flex flex-wrap max-sm:justify-center gap-8">
+                {
+                    dummyShowsData.slice(0, 4).map((movie, index) => (
+                        <FeaturedCardSection key={index} movie={movie} />
+                    ))
+                }
+
+            </div>
+            <div className="flex justify-center mt-20">
+                <button
+                    onClick={() => {
+                        navigate('/movies');
+                        window.scrollTo(0, 0);
+                    }}
+                    className="px-10 py-3 text-sm bg-primary hover:bg-cyan-700 transition
+                    rounded-md font-medium cursor-pointer
+                    "
+                > Show More</button>
+
+            </div>
+        </div >
     ) : (
-        <div>
-            Loading....
-        </div>
+        <Loading />
     )
 }
 
